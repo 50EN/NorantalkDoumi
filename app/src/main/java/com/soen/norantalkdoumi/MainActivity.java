@@ -12,7 +12,7 @@ import java.io.File;
 
 public class MainActivity extends BaseActivity{
     public static final int REQUEST_CODE = 1001;    // Lock Activity Code (Maybe Need to Change)
-    public static String password = "";             // Temp User Password
+    public static String password = "";             // User Password
 
 
     /*1. 디비에 pw 저장 여부 확인, 저장되면 intent lock
@@ -25,11 +25,11 @@ public class MainActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sqliteDB = init_db();
+//        sqliteDB = init_db();
 
 
         // Get User Password in DB
-        password = ""; // Need to Add DB Function
+        password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"; // Need to Add DB Function [sha256("0000")]
         // Call Lock Activity
         Intent intent = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
         intent.putExtra("passwd", password);            // Transfer Password by Parameter (name:passwd)
@@ -56,16 +56,16 @@ public class MainActivity extends BaseActivity{
 
     // if(db != null && 값이 true 이면){intent lockactivity}
 
-    private SQLiteDatabase init_db(){
-        SQLiteDatabase db = null;
-        File file = new File(getFilesDir(), "contact.db");
-
-    }
-    String pw = sqliteDB.rawQuery("SELECT password FROM" + tableName, null);
-    if(pw != null){//pw가 not null이면 intent lock
-        //intent로 lock으로 넘기기
-        Intent intent = new Intent(, LockActivity);
-
-        //onNewIntent();
-    }
+//    private SQLiteDatabase init_db(){
+//        SQLiteDatabase db = null;
+//        File file = new File(getFilesDir(), "contact.db");
+//
+//    }
+//    String pw = sqliteDB.rawQuery("SELECT password FROM" + tableName, null);
+//    if(pw != null){//pw가 not null이면 intent lock
+//        //intent로 lock으로 넘기기
+//        Intent intent = new Intent(, LockActivity);
+//
+//        //onNewIntent();
+//    }
 }

@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class LockActivity extends BaseActivity {
     public static String pw ;
     public static String input;
@@ -17,6 +20,9 @@ public class LockActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
+
+        // Test
+        Log.d("ENCRYPT: ",encryptSHA256("0000"));
 
         // Initialize Variables
         Intent intent = getIntent();
@@ -195,7 +201,7 @@ public class LockActivity extends BaseActivity {
                 else {
                     if(input.equals(input_tmp)){    // Second Step (Final)
                         // Password Setting
-                        Log.d("SET PASSWORD",input);
+                        Log.d("SET PASSWORD",encryptSHA256(input));
                         //
                         // Need to Add DB Function
                         //
@@ -220,7 +226,7 @@ public class LockActivity extends BaseActivity {
                 }
             }
             else {  // After Password Setting
-                if(input.equals(pw)) {  // Correct Password
+                if(encryptSHA256(input).equals(pw)) {  // Correct Password
                     setResult(RESULT_OK);
                     finish();
                 }
@@ -232,5 +238,21 @@ public class LockActivity extends BaseActivity {
 
         }
     }
-
+    public String encryptSHA256(String str){
+        String SHA = "";
+        try{
+            MessageDigest sh = MessageDigest.getInstance("SHA-256");
+            sh.update(str.getBytes());
+            byte byteData[] = sh.digest();
+            StringBuffer sb = new StringBuffer();
+            for(int i = 0 ; i < byteData.length ; i++){
+                sb.append(Integer.toString((byteData[i]&0xff) + 0x100, 16).substring(1));
+            }
+            SHA = sb.toString();
+        }catch(NoSuchAlgorithmException e){
+            e.printStackTrace();
+            SHA = null;
+        }
+        return SHA;
+    }
 }
