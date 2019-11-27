@@ -1,4 +1,4 @@
-package com.seon.norantalkdoumi;
+package com.soen.norantalkdoumi;
 
 import com.soen.norantalkdoumi.MainActivity;
 
