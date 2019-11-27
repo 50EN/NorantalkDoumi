@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -197,6 +198,11 @@ public class LockActivity extends BaseActivity {
                     imgview_circle3.setImageResource(R.drawable.circle);
                     ImageView imgview_circle4 = (ImageView)findViewById(R.id.imageview_circle4);
                     imgview_circle4.setImageResource(R.drawable.circle);
+
+                    // Toast Message
+                    Toast toast = Toast.makeText(getBaseContext(),
+                            "한번 더 입력해주세요.", Toast.LENGTH_LONG);
+                    toast.show();
                 }
                 else {
                     if(input.equals(input_tmp)){    // Second Step (Final)
@@ -205,6 +211,12 @@ public class LockActivity extends BaseActivity {
                         //
                         // Need to Add DB Function
                         //
+
+                        // Toast Message
+                        Toast toast = Toast.makeText(getBaseContext(),
+                                "비밀번호가 설정되었습니다.", Toast.LENGTH_LONG);
+                        toast.show();
+
                         setResult(RESULT_CANCELED);
                         finish();
                     }
@@ -222,6 +234,11 @@ public class LockActivity extends BaseActivity {
                         imgview_circle3.setImageResource(R.drawable.circle);
                         ImageView imgview_circle4 = (ImageView)findViewById(R.id.imageview_circle4);
                         imgview_circle4.setImageResource(R.drawable.circle);
+
+                        // Toast Message
+                        Toast toast = Toast.makeText(getBaseContext(),
+                                "두 비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG);
+                        toast.show();
                     }
                 }
             }
