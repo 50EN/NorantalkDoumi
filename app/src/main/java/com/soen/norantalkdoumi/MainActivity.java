@@ -1,6 +1,7 @@
 package com.soen.norantalkdoumi;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,7 @@ import java.io.File;
 
 public class MainActivity extends BaseActivity{
     public static final int REQUEST_CODE = 1001;    // Lock Activity Code (Maybe Need to Change)
-    public static String password = "";             // User Password
+    public static String password = "";             // Temp User Password
 
 
     /*1. 디비에 pw 저장 여부 확인, 저장되면 intent lock
@@ -25,11 +26,11 @@ public class MainActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        sqliteDB = init_db();
+        sqliteDB = init_database();
 
 
         // Get User Password in DB
-        password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"; // Need to Add DB Function [sha256("0000")]
+        password = ""; // Need to Add DB Function
         // Call Lock Activity
         Intent intent = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
         intent.putExtra("passwd", password);            // Transfer Password by Parameter (name:passwd)
@@ -56,16 +57,30 @@ public class MainActivity extends BaseActivity{
 
     // if(db != null && 값이 true 이면){intent lockactivity}
 
-//    private SQLiteDatabase init_db(){
-//        SQLiteDatabase db = null;
-//        File file = new File(getFilesDir(), "contact.db");
-//
-//    }
-//    String pw = sqliteDB.rawQuery("SELECT password FROM" + tableName, null);
-//    if(pw != null){//pw가 not null이면 intent lock
-//        //intent로 lock으로 넘기기
-//        Intent intent = new Intent(, LockActivity);
-//
-//        //onNewIntent();
-//    }
+    private SQLiteDatabase init_database(){
+        SQLiteDatabase db = null;
+        File file = new File(getFilesDir(), "contact.db");
+
+        System.out.println("PATH: "+file.toString());
+        try{
+            db = SQLiteDatabase.openOrCreateDatabase(file, null);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        if(db == null){
+            System.out.println("DB creation failed. " +file.getAbsolutePath());
+        }
+
+        return db;
+
+    }
+
+    String pw = sqliteDB.rawQuery("SELECT password FROM" + tableName, null);
+    if(pw != null){//pw가 not null이면 intent lock
+        //intent로 lock으로 넘기기
+        Intent intent = new Intent(, LockActivity);
+
+        //onNewIntent();
+    }
 }
