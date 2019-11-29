@@ -19,14 +19,14 @@ public class MainActivity extends BaseActivity{
     /*1. 디비에 pw 저장 여부 확인, 저장되면 intent lock
      * -> lock에서 받은 값이 true라면 메인 동작함. 아니면 다시 lock으로 넘겨줌 반복*/
 
-    SQLiteDatabase sqliteDB;
+   // SQLiteDatabase sqliteDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sqliteDB = init_database();
+        //sqliteDB = init_database();
 
 
         // Get User Password in DB
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity{
 
     // if(db != null && 값이 true 이면){intent lockactivity}
 
-    private SQLiteDatabase init_database(){
+   /* private SQLiteDatabase init_database(){
         SQLiteDatabase db = null;
         File file = new File(getFilesDir(), "contact.db");
 
@@ -82,5 +82,5 @@ public class MainActivity extends BaseActivity{
         Intent intent = new Intent(, LockActivity);
 
         //onNewIntent();
-    }
+    }*/
 }
