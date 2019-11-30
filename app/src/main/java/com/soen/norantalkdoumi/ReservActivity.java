@@ -87,8 +87,8 @@ public class ReservActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // Call Setting Activity
-//                Intent intent = new Intent(getApplicationContext(), com.soen.norantalkdoumi.SettingActivity.class);
-//                startActivityForResult(intent, SETTING_REQUEST_CODE);
+                Intent intentSetting = new Intent(getApplicationContext(), com.soen.norantalkdoumi.SettingActivity.class);
+                startActivityForResult(intentSetting, SETTING_REQUEST_CODE);
             }
         });
     }
