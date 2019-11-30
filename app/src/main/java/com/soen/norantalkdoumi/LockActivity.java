@@ -22,9 +22,6 @@ public class LockActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
 
-        // Test
-        Log.d("ENCRYPT: ",encryptSHA256("0000"));
-
         // Initialize Variables
         Intent intent = getIntent();
         pw = intent.getExtras().getString("passwd");    // Seted User Password
