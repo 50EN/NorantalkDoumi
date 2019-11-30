@@ -1,31 +1,21 @@
 package com.soen.norantalkdoumi;
 
 import android.content.Intent;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
-import java.io.File;
 
 public class MainActivity extends BaseActivity{
-    public static final int REQUEST_CODE = 1001;    // Lock Activity Code (Maybe Need to Change)
+    public static final int LOCK_REQUEST_CODE = 1001;// Lock Activity Code (Maybe Need to Change)
+    public static final int RESERV_REQUEST_CODE = 1002;// Reserv Activity Code (Maybe Need to Change)
+    public static final int SETTING_REQUEST_CODE = 1003;// Setting Activity Code (Maybe Need to Change)
     public static String password = "";             // Temp User Password
-
-
-    /*1. 디비에 pw 저장 여부 확인, 저장되면 intent lock
-     * -> lock에서 받은 값이 true라면 메인 동작함. 아니면 다시 lock으로 넘겨줌 반복*/
-
-   // SQLiteDatabase sqliteDB;
+    DataBase database = new DataBase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//     DataBase.DbOpenHelper.DbHelper.create();
         //sqliteDB = init_database();
 
 
@@ -34,22 +24,22 @@ public class MainActivity extends BaseActivity{
         // Call Lock Activity
         Intent intent = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
         intent.putExtra("passwd", password);            // Transfer Password by Parameter (name:passwd)
-        startActivityForResult(intent, REQUEST_CODE);
+        startActivityForResult(intent, LOCK_REQUEST_CODE);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
         // Lock Activity
-        if(requestCode == REQUEST_CODE){
+        if(requestCode == LOCK_REQUEST_CODE){
             if(resultCode == RESULT_CANCELED) {
                 // Get User Password in DB
-                password = ""; // Need to Add DB Function
+                password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"; // Need to Add DB Function
 
                 // ReCall Lock Activity
                 Intent intentRe = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
                 intentRe.putExtra("passwd", password);  // Transfer Password by Parameter (name:passwd)
-                startActivityForResult(intentRe, REQUEST_CODE);
+                startActivityForResult(intentRe, LOCK_REQUEST_CODE);
             }
         }
 
