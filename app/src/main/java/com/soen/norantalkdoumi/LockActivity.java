@@ -32,6 +32,13 @@ public class LockActivity extends BaseActivity {
         input_len = 0;
         input_tmp = "";
 
+        if(pw.equals("")){
+            // Toast Message
+            Toast toast = Toast.makeText(getBaseContext(),
+                    "설정할 패스워드를 입력하세요.", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
         // Press Key Buttons
         Button btnNum1 = (Button)findViewById(R.id.button1);
         btnNum1.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +221,7 @@ public class LockActivity extends BaseActivity {
 
                         // Toast Message
                         Toast toast = Toast.makeText(getBaseContext(),
-                                "비밀번호가 설정되었습니다.", Toast.LENGTH_LONG);
+                                "패스워드가 설정되었습니다.", Toast.LENGTH_LONG);
                         toast.show();
 
                         setResult(RESULT_CANCELED);
@@ -237,7 +244,7 @@ public class LockActivity extends BaseActivity {
 
                         // Toast Message
                         Toast toast = Toast.makeText(getBaseContext(),
-                                "두 비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG);
+                                "두 패스워드가 일치하지 않습니다.", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
