@@ -3,13 +3,18 @@ package com.soen.norantalkdoumi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends BaseActivity{
     public static final int LOCK_REQUEST_CODE = 1001;       // Lock Activity Code (Maybe Need to Change)
     public static final int RESERV_REQUEST_CODE = 1002;     // Reserv Activity Code (Maybe Need to Change)
     public static final int SETTING_REQUEST_CODE = 1003;    // Setting Activity Code (Maybe Need to Change)
     public static String password = "";             // Temp User Password
+    public static LinearLayout reservLayout;
+    public static Button btnDel;
     DataBase database = new DataBase();
 
     @Override
@@ -45,6 +50,25 @@ public class MainActivity extends BaseActivity{
                 startActivityForResult(intentSetting, SETTING_REQUEST_CODE);
             }
         });
+
+        // Reservation Messeage Layout
+        reservLayout = (LinearLayout) findViewById(R.id.ReservLayout);
+        reservLayout.setVisibility(View.INVISIBLE);
+
+        btnDel = (Button)findViewById(R.id.button10);
+        btnDel.setVisibility(View.INVISIBLE);
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Delete Reservation
+
+                //
+                // Need to Add Controling more than one data
+                //
+                reservLayout.setVisibility(View.INVISIBLE);
+                btnDel.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     @Override
@@ -61,6 +85,28 @@ public class MainActivity extends BaseActivity{
                 Intent intentRe = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
                 intentRe.putExtra("passwd", password);  // Transfer Password by Parameter (name:passwd)
                 startActivityForResult(intentRe, LOCK_REQUEST_CODE);
+            }
+        }
+        else if(requestCode == RESERV_REQUEST_CODE){
+            if(resultCode == RESULT_OK){
+                reservLayout.setVisibility(View.VISIBLE);
+                btnDel.setVisibility(View.VISIBLE);
+
+                // Synchronize Reservation Layout
+
+                //
+                // Get Reserv Data in DB
+                //
+
+                TextView txtViewName = (TextView)findViewById(R.id.Name);
+                TextView txtViewDate = (TextView)findViewById(R.id.Date);
+                TextView txtViewTime = (TextView)findViewById(R.id.Time);
+                TextView txtViewMsg = (TextView)findViewById(R.id.Message);
+
+                txtViewName.setText("T");
+                txtViewDate.setText("E");
+                txtViewTime.setText("S");
+                txtViewMsg.setText("T");
             }
         }
 
