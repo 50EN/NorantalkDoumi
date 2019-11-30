@@ -21,10 +21,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/PrevM"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/msg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/record"
@@ -74,14 +75,14 @@
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.225"/>
 
     <EditText
         android:id="@+id/Name"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:privateImeOptions="defaultInputmode=korean"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.104"
@@ -108,7 +109,7 @@
         android:layout_height="50dp"
         android:ems="10"
         android:inputType="time"
-        android:text="hh:mm"
+        android:hint="hh:mm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
@@ -135,7 +136,7 @@
         android:layout_height="50dp"
         android:ems="10"
         android:inputType="date"
-        android:text="year.mm.dd"
+        android:hint="mm.dd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.104"
@@ -182,5 +183,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
