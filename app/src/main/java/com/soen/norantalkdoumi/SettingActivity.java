@@ -15,7 +15,7 @@ public class SettingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        ImageButton btnBack = (ImageButton)findViewById(R.id.Setting);
+        ImageButton btnBack = (ImageButton)findViewById(R.id.back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
