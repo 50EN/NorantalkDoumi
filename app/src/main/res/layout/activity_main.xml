@@ -21,11 +21,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/PrevM"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/msg"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Record"
         app:layout_constraintHorizontal_bias="0.28"
@@ -64,49 +65,47 @@
     </ImageButton>
 
     <LinearLayout
-        android:layout_width="450dp"
-        android:layout_height="108dp"
+        android:layout_width="350dp"
+        android:layout_height="220dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.234">
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="124dp"
+        tools:ignore="MissingConstraints">
 
-        <LinearLayout
-            android:layout_width="450dp"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/Name"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/Name"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/Date"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:inputType="date" />
+        <TextView
+            android:id="@+id/Date"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="date" />
 
-            <EditText
-                android:id="@+id/Time"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:inputType="time" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/Time"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="time" />
 
-        <EditText
+        <TextView
             android:id="@+id/Message"
-            android:layout_width="450dp"
+            android:layout_width="350dp"
             android:layout_height="45dp"
             android:ems="10"
             android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete" />
+
     </LinearLayout>
 
 
