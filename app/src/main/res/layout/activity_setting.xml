@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="400dp"
@@ -22,47 +24,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/PrevM"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/msg"
+        android:id="@+id/back"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Record"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
-
-    <ImageButton
-        android:id="@+id/Record"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/record"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03">
-
-    </ImageButton>
-
-    <ImageButton
-        android:id="@+id/Setting"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/setting"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
-        app:layout_constraintStart_toEndOf="@+id/Record"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023">
-
-    </ImageButton>
+        android:src="@drawable/back"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imagelock"
@@ -70,19 +39,17 @@
         android:layout_height="100dp"
         android:background="@android:color/transparent"
         android:src="@drawable/lock2"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="170dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="139dp" />
 
     <Button
         android:id="@+id/암호변경"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="암호  변경"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="220dp"
-        tools:ignore="MissingConstraints" />
-
+        tools:layout_editor_absoluteY="189dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
