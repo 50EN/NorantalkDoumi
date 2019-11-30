@@ -64,49 +64,25 @@
 
     </ImageButton>
 
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="220dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="124dp"
-        tools:ignore="MissingConstraints">
+    <ImageView
+        android:id="@+id/imagelock"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/lock2"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="170dp"
+        tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/Name"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:inputType="textPersonName" />
-
-
-        <TextView
-            android:id="@+id/Date"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:inputType="date" />
-
-        <TextView
-            android:id="@+id/Time"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:inputType="time" />
-
-        <TextView
-            android:id="@+id/Message"
-            android:layout_width="350dp"
-            android:layout_height="45dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/암호변경"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="암호  변경"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="220dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
