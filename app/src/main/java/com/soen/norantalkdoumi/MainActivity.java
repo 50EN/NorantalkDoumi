@@ -2,6 +2,7 @@ package com.soen.norantalkdoumi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,10 +25,14 @@ public class MainActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String test = "";
+
         final DBManager dbManager = new DBManager(getApplicationContext(), "noran.db",null,1);
+        dbManager.delete_PW();
+        test = dbManager.getResult_PW();
+        Log.d("DB", test);
 
-
-        dbManager.insert_PW("9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0");
+//        dbManager.insert_PW("9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0");
 //        dbManager.insert_MSG("a",2,2,2,2, "set");
 //        dbManager.delete("a");
 //        dbManager.update_PW("1234");
@@ -37,7 +42,8 @@ public class MainActivity extends BaseActivity{
 //     DataBase.DbOpenHelper.DbHelper.create();
 
         // Get User Password in DB
-        password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"; // Need to Add DB Function
+//        password = dbManager.getResult_PW(); // Need to Add DB Function
+        password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0";
         // Call Lock Activity
         Intent intent = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
         intent.putExtra("passwd", password);            // Transfer Password by Parameter (name:passwd)
@@ -91,7 +97,9 @@ public class MainActivity extends BaseActivity{
         if(requestCode == LOCK_REQUEST_CODE){
             if(resultCode == RESULT_CANCELED) {
                 // Get User Password in DB
-                password = dbManager.getResult_PW(); // Need to Add DB Function
+                Log.d("PW", "onActivityResult: Get PW");
+                password ="9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0";
+//                password = dbManager.getResult_PW(); // Need to Add DB Function
 
                 // ReCall Lock Activity
                 Intent intentRe = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
@@ -111,16 +119,17 @@ public class MainActivity extends BaseActivity{
                 // Get Reserv Data in DB
                 //
 
+
                 TextView txtViewName = (TextView)findViewById(R.id.Name);
                 TextView txtViewDate = (TextView)findViewById(R.id.Date);
                 TextView txtViewTime = (TextView)findViewById(R.id.Time);
                 TextView txtViewMsg = (TextView)findViewById(R.id.Message);
 
 //
-//                txtViewDate = dbManager.getResult_MSG();
-//                txtViewMsg = dbManager.getResult_MSG();
-//                txtViewName = dbManager.getResult_MSG();
-//                txtViewTime = dbManager.getResult_MSG();
+//                txtViewDate.setText(dbManager.getResult_MSG());
+//                txtViewMsg.setText(dbManager.getResult_MSG());
+//                txtViewName.setText(dbManager.getResult_MSG());
+//                txtViewTime.setText(dbManager.getResult_MSG());
 //
                 txtViewName.setText("T");
                 txtViewDate.setText("E");
