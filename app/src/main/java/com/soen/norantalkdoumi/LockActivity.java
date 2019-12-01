@@ -16,11 +16,15 @@ public class LockActivity extends BaseActivity {
     public static String input;
     public static String input_tmp;
     public static int input_len;
+    public static DBManager dbManager;
+//    final DBManager dbManager = new DBManager(getApplicationContext(), "noran.db",null,1);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
+
 
         // Initialize Variables
         Intent intent = getIntent();
@@ -165,6 +169,8 @@ public class LockActivity extends BaseActivity {
 
     private void passwdCheck() {
         Log.d("INPUT: ",input);
+        final DBManager dbManager = new DBManager(getApplicationContext(), "noran.db",null,1);
+
 
         // Fill Circle
         switch(input_len){
@@ -212,9 +218,9 @@ public class LockActivity extends BaseActivity {
                     if(input.equals(input_tmp)){    // Second Step (Final)
                         // Password Setting
                         Log.d("SET PASSWORD",encryptSHA256(input));
-                        //
-                        // Need to Add DB Function
-                        //
+
+                        //insert encrypted pw
+                        dbManager.insert_PW(encryptSHA256(input));
 
                         // Toast Message
                         Toast toast = Toast.makeText(getBaseContext(),
