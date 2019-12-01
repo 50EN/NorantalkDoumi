@@ -74,13 +74,17 @@ public class DBManager extends SQLiteOpenHelper {
 
     public String getResult_PW(){
         SQLiteDatabase db = getReadableDatabase();//db 수정 가능 한 상태로 열기
-        String result = "";
+        String result="";
+//        result = db.execSQL(" SELECT * FROM pwTable ");
+        Log.d("DB","Result1-1");
 
         Cursor cursor = db.rawQuery("SELECT * FROM pwTable", null);
 
-//        Log.d("DB","Result1-2");
+        Log.d("DB","Result1-2");
 
         while(cursor.moveToNext()){
+            Log.d("DB","Result1-3");
+
             result += cursor.getString(0)
                     + " : ";
         }
