@@ -15,15 +15,26 @@ public class MainActivity extends BaseActivity{
     public static String password = "";             // Temp User Password
     public static LinearLayout reservLayout;
     public static Button btnDel;
-    DataBase database = new DataBase();
+    // DataBase database = new DataBase();
+//    final DBManager dbManager = new DBManager(getApplicationContext(), "noran.db",null,1);
+    public static DBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final DBManager dbManager = new DBManager(getApplicationContext(), "noran.db",null,1);
+
+
+        dbManager.insert_PW("9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0");
+//        dbManager.insert_MSG("a",2,2,2,2, "set");
+//        dbManager.delete("a");
+//        dbManager.update_PW("1234");
+        dbManager.getResult_PW();
+//        dbManager.getResult_MSG();
+
 //     DataBase.DbOpenHelper.DbHelper.create();
-        //sqliteDB = init_database();
 
         // Get User Password in DB
         password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"; // Need to Add DB Function
@@ -62,6 +73,7 @@ public class MainActivity extends BaseActivity{
             public void onClick(View v) {
                 // Delete Reservation
 
+
                 //
                 // Need to Add Controling more than one data
                 //
@@ -79,7 +91,7 @@ public class MainActivity extends BaseActivity{
         if(requestCode == LOCK_REQUEST_CODE){
             if(resultCode == RESULT_CANCELED) {
                 // Get User Password in DB
-                password = "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"; // Need to Add DB Function
+                password = dbManager.getResult_PW(); // Need to Add DB Function
 
                 // ReCall Lock Activity
                 Intent intentRe = new Intent(getApplicationContext(), com.soen.norantalkdoumi.LockActivity.class);
@@ -94,6 +106,7 @@ public class MainActivity extends BaseActivity{
 
                 // Synchronize Reservation Layout
 
+
                 //
                 // Get Reserv Data in DB
                 //
@@ -103,6 +116,12 @@ public class MainActivity extends BaseActivity{
                 TextView txtViewTime = (TextView)findViewById(R.id.Time);
                 TextView txtViewMsg = (TextView)findViewById(R.id.Message);
 
+//
+//                txtViewDate = dbManager.getResult_MSG();
+//                txtViewMsg = dbManager.getResult_MSG();
+//                txtViewName = dbManager.getResult_MSG();
+//                txtViewTime = dbManager.getResult_MSG();
+//
                 txtViewName.setText("T");
                 txtViewDate.setText("E");
                 txtViewTime.setText("S");
@@ -112,7 +131,6 @@ public class MainActivity extends BaseActivity{
 
     }
 
-    // if(db != null && 값이 true 이면){intent lockactivity}
 
    /* private SQLiteDatabase init_database(){
         SQLiteDatabase db = null;
@@ -131,13 +149,7 @@ public class MainActivity extends BaseActivity{
 
         return db;
 
-    }
-
-    String pw = sqliteDB.rawQuery("SELECT password FROM" + tableName, null);
-    if(pw != null){//pw가 not null이면 intent lock
-        //intent로 lock으로 넘기기
-        Intent intent = new Intent(, LockActivity);
-
-        //onNewIntent();
     }*/
+
+
 }
