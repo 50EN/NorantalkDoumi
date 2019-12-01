@@ -12,6 +12,16 @@ public class DBManager extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    public static final String PASSWORD = "password";
+    public static final String PEOPLE = "people";
+    public static final String MESSAGE = "message";
+    public static final String MONTH = "month";
+    public static final String DAY = "day";
+    public static final String HOUR = "hour";
+    public static final String MIN = "min";
+    public static final String _MSGTABLENAME = "msgTable";
+    public static final String _PWTABLENAME = "pwTable";
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "
@@ -32,16 +42,6 @@ public class DBManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-
-    public static final String PASSWORD = "password";
-    public static final String PEOPLE = "people";
-    public static final String MESSAGE = "message";
-    public static final String MONTH = "month";
-    public static final String DAY = "day";
-    public static final String HOUR = "hour";
-    public static final String MIN = "min";
-    public static final String _MSGTABLENAME = "msgTable";
-    public static final String _PWTABLENAME = "pwTable";
 
     //pw 설정
     public void insert_PW(String password){
